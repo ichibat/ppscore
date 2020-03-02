@@ -121,7 +121,7 @@ function handleText(message, replyToken, source) {
 
   const buttonsImageURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/%E3%81%B0%E3%82%89%E3%81%9A%E3%81%97%E3%81%AE%E6%9D%90%E6%96%99%E4%BE%8B.jpg/320px-%E3%81%B0%E3%82%89%E3%81%9A%E3%81%97%E3%81%AE%E6%9D%90%E6%96%99%E4%BE%8B.jpg";
 
-//modified for local server end
+//modified for local server ended
 
 
   switch (message.text) {
