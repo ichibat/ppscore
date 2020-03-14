@@ -164,9 +164,7 @@ function handleText(message, replyToken, source) {
         }
       );
 
-  //inserted
-
-  
+  //inserted start
   case 'buttonss':
     return client.replyMessage(
       replyToken,
