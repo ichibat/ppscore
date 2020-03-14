@@ -1,4 +1,11 @@
 
-8fa67ebffd7cc6b769ee4c627fa943eb
+ngrok http 3000
 
-b4VsG93OL7g9GQ4W00YOEdwHHaP4JkD7/rDjlhf/e4FK8Ux6dk2wOywFLvxYbiUhosBaFrYPmHMScqXVXgpbHsSu5zQEy7U/ReYre1+6wqPPFTFAqbN5nyFNhfeSBcJgdIHyZhIC1K3d88nzH/zOmgdB04t89/1O/w1cDnyilFU=
+
+export CHANNEL_SECRET=YOUR_CHANNEL_SECRET
+export CHANNEL_ACCESS_TOKEN=YOUR_CHANNEL_ACCESS_TOKEN
+export BASE_URL=https://your.base.url # for static file serving
+export PORT=1234
+
+echo $CHANNEL_SECRET
+echo $CHANNEL_ACCESS_TOKEN
