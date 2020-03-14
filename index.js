@@ -165,6 +165,53 @@ function handleText(message, replyToken, source) {
       );
 
   //inserted start
+  case '開始':
+    return client.replyMessage(
+      replyToken,
+      {
+        type: 'template',
+        altText: 'Buttons alt text',
+        template: {
+          type: 'buttons',
+          thumbnailImageUrl: medical_houmon_iryou_man,
+          // title: 'My button sample',
+          text: '主治医は寿命をどれくらいと予測していますか？',
+          actions: [
+            { label: '１～２週です．', type: 'postback', data: '8.5',text: '１～２週です．' },
+            { label: '３～４週です．', type: 'postback', data: 'cold' ,text: '３～４週です．'},
+            { label: '５～６週です．', type: 'postback', data: 'hello こんにちは', text: '血圧が高いです．' },
+            { label: '７～１2週です．', type: 'postback', data: 'bad', text: '調子がいまひとつです．' },
+          ],
+        },
+      }
+    );
+  //inserted end
+
+  //inserted start
+  case '１～２週です．':
+    return client.replyMessage(
+      replyToken,
+      {
+        type: 'template',
+        altText: 'Buttons alt text',
+        template: {
+          type: 'buttons',
+          thumbnailImageUrl: medical_houmon_iryou_man,
+          // title: 'My button sample',
+          text: '全身状態は',
+          actions: [
+            { label: '全く動けず', type: 'postback', data: '8.5',text: '30+' },
+            { label: '「非常に重症', type: 'postback', data: '20−' ,text: '風邪気味です．'},
+            { label: '５～６週です．', type: 'postback', data: 'hello こんにちは', text: '血圧が高いです．' },
+            { label: '７～１2週です．', type: 'postback', data: 'bad', text: '調子がいまひとつです．' },
+          ],
+        },
+      }
+    );
+  //inserted end
+
+
+  //inserted start
   case 'buttonss':
     return client.replyMessage(
       replyToken,

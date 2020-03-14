@@ -9,3 +9,4 @@ export PORT=1234
 
 echo $CHANNEL_SECRET
 echo $CHANNEL_ACCESS_TOKEN
+
