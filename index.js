@@ -128,6 +128,10 @@ function handleText(message, replyToken, source) {
 
 //modified for local server ended
 
+
+
+
+
 // inserted start
  
 if (message.text === 'profiles') {
@@ -151,10 +155,61 @@ if (message.text === 'profiles') {
     return client.replyMessage(
       replyToken,
       {
-        'type':'message',
         "type":"text",
         "label":"prognosis",
-        "text":"臨床的な予後の予測は？または医者はどれくらいの寿命とみている？"
+        "text":"臨床的な予後の予測は？または医者はどれくらいの寿命とみている？",
+        "quickReply":　{ 
+          "items": [
+            {
+              "type": "action", 
+              "action": {
+                "type": "message",
+                "label": "１～２週",
+                "text": "8.5"
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": "３～４週",
+                "text": "6.0"
+              }
+            },
+            {
+              "type": "action", 
+              "action": {
+                "type": "message",
+                "label": "５～６週",
+                "text": "4.5"
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": "７～１０週",
+                "text": "2.5"
+              }
+            },
+            {
+              "type": "action", 
+              "action": {
+                "type": "message",
+                "label": "１１～１２週",
+                "text": "2.5"
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": "13週以上",
+                "text": "0"
+              }
+            },
+          ]
+        }
       }
     );
   };
