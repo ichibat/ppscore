@@ -128,6 +128,12 @@ function handleText(message, replyToken, source) {
 
 //modified for local server ended
 
+// values initialize
+  let question = "";
+  let label1, label2,label3, label4,label5,label6 = "";
+  let text1, text2, text3, text4, text5, text6 = "";
+  let [mes, currentScore] = message.text.split(":"); 
+
 
 
 
@@ -152,36 +158,63 @@ if (message.text === 'profiles') {
 
   //inserted start
   if (message.text === '開始か') {
+    currentScore = 0;
+    question = "臨床的な予後の予測は？または医者はどれくらいの寿命とみている？";
+
+    label1 = "１～２週";
+    text1 = "トータルスコア:"+String(Number(currentScore)+ 8.5);
+    message = text1;
+
+    label2 = "３～４週";
+    text2 = "トータルスコア:"+String(Number(currentScore)+ 6);
+    message = text2;
+
+    label3 = "５～６週";
+    text3 = "トータルスコア:"+String(Number(currentScore)+ 4);
+    message = text3;
+
+    label4 = "７～１０週";
+    text4 = "トータルスコア:"+String(Number(currentScore)+ 2.5);
+    message = text4;
+
+    label5 = "１１～１２週";
+    text5 = "トータルスコア:"+String(Number(currentScore)+ 2.5);
+    message = text5;
+
+    label6 = "１３週以上";
+    text6 = "トータルスコア:"+String(Number(currentScore)+ 0);
+    message = text6;
+
     return client.replyMessage(
       replyToken,
       {
         "type":"text",
         "label":"prognosis",
-        "text":"臨床的な予後の予測は？または医者はどれくらいの寿命とみている？",
+        "text": question,
         "quickReply":　{ 
           "items": [
             {
               "type": "action", 
               "action": {
                 "type": "message",
-                "label": "１～２週",
-                "text": "8.5"
+                "label": label1,
+                "text": text1,
               }
             },
             {
               "type": "action",
               "action": {
                 "type": "message",
-                "label": "３～４週",
-                "text": "6.0"
+                "label": label2,
+                "text": text2,
               }
             },
             {
               "type": "action", 
               "action": {
                 "type": "message",
-                "label": "５～６週",
-                "text": "4.5"
+                "label": label3,
+                "text": text3,
               }
             },
             {
