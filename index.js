@@ -128,6 +128,49 @@ function handleText(message, replyToken, source) {
 
 //modified for local server ended
 
+// inserted start
+ 
+if (message.text === 'profiles') {
+  if (source.userId) {
+    return client.getProfile(source.userId)
+      .then((profile) => replyText(
+        replyToken,
+        [
+          `Display name: ${profile.displayName}`,
+          `Status message: ${profile.statusMessage}`,
+        ]
+      ));
+  } else {
+    return replyText(replyToken, 'Bot can\'t use profile API without user ID');
+  }
+};
+// inserted end
+
+  //inserted start
+  if (message.text === '開始か') {
+    return client.replyMessage(
+      replyToken,
+      {
+        type: 'template',
+        altText: 'Buttons alt text',
+        template: {
+          type: 'buttons',
+          thumbnailImageUrl: medical_houmon_iryou_man,
+          // title: 'My button sample',
+          text: '主治医は寿命をどれくらいと予測していますか？',
+          actions: [
+            { label: '１～２週です．', type: 'postback', data: '8.5',text: '１～２週です．' },
+            { label: '３～４週です．', type: 'postback', data: 'cold' ,text: '３～４週です．'},
+            { label: '５～６週です．', type: 'postback', data: 'hello こんにちは', text: '血圧が高いです．' },
+            { label: '７～１2週です．', type: 'postback', data: 'bad', text: '調子がいまひとつです．' },
+          ],
+        },
+      }
+    );
+  };
+  //inserted end
+
+
 
   switch (message.text) {
     case 'profile':
