@@ -151,20 +151,10 @@ if (message.text === 'profiles') {
     return client.replyMessage(
       replyToken,
       {
-        type: 'template',
-        altText: 'Buttons alt text',
-        template: {
-          type: 'buttons',
-          thumbnailImageUrl: medical_houmon_iryou_man,
-          // title: 'My button sample',
-          text: '主治医は寿命をどれくらいと予測していますか？',
-          actions: [
-            { label: '１～２週です．', type: 'postback', data: '8.5',text: '１～２週です．' },
-            { label: '３～４週です．', type: 'postback', data: 'cold' ,text: '３～４週です．'},
-            { label: '５～６週です．', type: 'postback', data: 'hello こんにちは', text: '血圧が高いです．' },
-            { label: '７～１2週です．', type: 'postback', data: 'bad', text: '調子がいまひとつです．' },
-          ],
-        },
+        'type':'message',
+        "type":"text",
+        "label":"prognosis",
+        "text":"臨床的な予後の予測は？または医者はどれくらいの寿命とみている？"
       }
     );
   };
