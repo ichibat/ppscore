@@ -227,27 +227,27 @@ function handleText(message, replyToken, source) {
     question = "全身状態はどれにあてはまりますか？";
 
     label1 = "正常、臨床症状なし";
-    text1 = "トータルスコア:"+String(Number(currentScore)+ 0);
+    text1 = "KPS トータルスコア:"+String(Number(currentScore)+ 0);
     message = text1;
 
-    label2 = "軽い臨床症状があるが正常の活動可能";
-    text2 = "トータルスコア:"+String(Number(currentScore)+ 0);
+    label2 = "軽い症状があるが正常の活動可能";
+    text2 = "KPS トータルスコア:"+String(Number(currentScore)+ 0);
     message = text2;
 
     label3 = "症状があるが努力して正常の活動が可能";
-    text3 = "トータルスコア:"+String(Number(currentScore)+ 0);
+    text3 = "KPS トータルスコア:"+String(Number(currentScore)+ 0);
     message = text3;
 
     label4 = "自分の世話はできるが正常の活動不可能";
-    text4 = "トータルスコア:"+String(Number(currentScore)+ 0);
+    text4 = "KPS トータルスコア:"+String(Number(currentScore)+ 0);
     message = text4;
 
     label5 = "看護および定期的な医療行為が必要";
-    text5 = "トータルスコア:"+String(Number(currentScore)+ 0);
+    text5 = "KPS トータルスコア:"+String(Number(currentScore)+ 0);
     message = text5;
 
     label6 = "動けず、適切な医療および看護が必要";
-    text6 = "トータルスコア:"+String(Number(currentScore)+ 0);
+    text6 = "KPS トータルスコア:"+String(Number(currentScore)+ 0);
     message = text6;
 
     console.log(question);
@@ -309,7 +309,49 @@ function handleText(message, replyToken, source) {
               }
             },
           ]
-        }
+        } 
+      }
+    );
+  
+  } else if (/^KPS/.test(message.text)) {
+    question = "食欲は？";
+
+    label1 = "食欲あり";
+    text1 = "appetite トータルスコア:"+String(Number(currentScore)+ 1.5);
+    message = text1;
+
+    label2 = "食欲なし";
+    text2 = "appetite トータルスコア:"+String(Number(currentScore)+ 0);
+    message = text2;
+
+    console.log(question);
+
+    return client.replyMessage(
+      replyToken,
+      {
+        "type":"text",
+        "label":"ps",
+        "text": question,
+        "quickReply":　{ 
+          "items": [
+            {
+              "type": "action", 
+              "action": {
+                "type": "message",
+                "label": label1,
+                "text": text1,
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": label2,
+                "text": text2,
+              }
+            },
+          ]
+        } 
       }
     );
   
