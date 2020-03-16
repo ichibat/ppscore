@@ -134,55 +134,33 @@ function handleText(message, replyToken, source) {
   let text1, text2, text3, text4, text5, text6 = "";
   let [mes, currentScore] = message.text.split(":"); 
 
-
-
-
-
-// inserted start
- 
-if (message.text === 'profiles') {
-  if (source.userId) {
-    return client.getProfile(source.userId)
-      .then((profile) => replyText(
-        replyToken,
-        [
-          `Display name: ${profile.displayName}`,
-          `Status message: ${profile.statusMessage}`,
-        ]
-      ));
-  } else {
-    return replyText(replyToken, 'Bot can\'t use profile API without user ID');
-  }
-};
-// inserted end
-
   //inserted start
-  if (message.text === '開始か') {
+  if (message.text === '開始') {
     currentScore = 0;
     question = "臨床的な予後の予測は？または医者はどれくらいの寿命とみている？";
 
-    label1 = "１～２週";
-    text1 = "トータルスコア:"+String(Number(currentScore)+ 8.5);
+    label1 = "1~2週";
+    text1 = "1~2週 トータルスコア:"+String(Number(currentScore)+ 8.5);
     message = text1;
 
-    label2 = "３～４週";
-    text2 = "トータルスコア:"+String(Number(currentScore)+ 6);
+    label2 = "3~4週";
+    text2 = "3~4週 トータルスコア:"+String(Number(currentScore)+ 6);
     message = text2;
 
-    label3 = "５～６週";
-    text3 = "トータルスコア:"+String(Number(currentScore)+ 4);
+    label3 = "5~6週";
+    text3 = "5~6週 トータルスコア:"+String(Number(currentScore)+ 4);
     message = text3;
 
-    label4 = "７～１０週";
-    text4 = "トータルスコア:"+String(Number(currentScore)+ 2.5);
+    label4 = "7~10週";
+    text4 = "7~10週 トータルスコア:"+String(Number(currentScore)+ 2.5);
     message = text4;
 
-    label5 = "１１～１２週";
-    text5 = "トータルスコア:"+String(Number(currentScore)+ 2.5);
+    label5 = "11~12週";
+    text5 = "11~12週 トータルスコア:"+String(Number(currentScore)+ 2.5);
     message = text5;
 
-    label6 = "１３週以上";
-    text6 = "トータルスコア:"+String(Number(currentScore)+ 0);
+    label6 = "13週以上";
+    text6 = "13週以上 トータルスコア:"+String(Number(currentScore)+ 0);
     message = text6;
 
     return client.replyMessage(
@@ -221,283 +199,120 @@ if (message.text === 'profiles') {
               "type": "action",
               "action": {
                 "type": "message",
-                "label": "７～１０週",
-                "text": "2.5"
+                "label": label4,
+                "text": text4,
               }
             },
             {
               "type": "action", 
               "action": {
                 "type": "message",
-                "label": "１１～１２週",
-                "text": "2.5"
+                "label": label5,
+                "text": text5,
               }
             },
             {
               "type": "action",
               "action": {
                 "type": "message",
-                "label": "13週以上",
-                "text": "0"
+                "label": label6,
+                "text": text6,
               }
             },
           ]
         }
       }
     );
-  };
-  //inserted end
+  } else if (/^1~2/.test(message.text)) {
+    question = "全身状態はどれにあてはまりますか？";
 
+    label1 = "正常、臨床症状なし";
+    text1 = "トータルスコア:"+String(Number(currentScore)+ 0);
+    message = text1;
 
+    label2 = "軽い臨床症状があるが正常の活動可能";
+    text2 = "トータルスコア:"+String(Number(currentScore)+ 0);
+    message = text2;
 
-  switch (message.text) {
-    case 'profile':
-      if (source.userId) {
-        return client.getProfile(source.userId)
-          .then((profile) => replyText(
-            replyToken,
-            [
-              `Display name: ${profile.displayName}`,
-              `Status message: ${profile.statusMessage}`,
-            ]
-          ));
-      } else {
-        return replyText(replyToken, 'Bot can\'t use profile API without user ID');
-      }
-    case 'buttons':
-      return client.replyMessage(
-        replyToken,
-        {
-          type: 'template',
-          altText: 'Buttons alt text',
-          template: {
-            type: 'buttons',
-            thumbnailImageUrl: buttonsImageURL,
-            title: 'My button sample',
-            text: 'Hello, my button',
-            actions: [
-              { label: 'Go to line.me', type: 'uri', uri: 'https://line.me' },
-              { label: 'Say hello1', type: 'postback', data: 'hello こんにちは' },
-              { label: '言 hello2', type: 'postback', data: 'hello こんにちは', text: 'hello こんにちは' },
-              { label: 'Say message', type: 'message', text: 'Rice=米' },
-            ],
-          },
-        }
-      );
+    label3 = "症状があるが努力して正常の活動が可能";
+    text3 = "トータルスコア:"+String(Number(currentScore)+ 0);
+    message = text3;
 
-  //inserted start
-  case '開始':
+    label4 = "自分の世話はできるが正常の活動不可能";
+    text4 = "トータルスコア:"+String(Number(currentScore)+ 0);
+    message = text4;
+
+    label5 = "看護および定期的な医療行為が必要";
+    text5 = "トータルスコア:"+String(Number(currentScore)+ 0);
+    message = text5;
+
+    label6 = "動けず、適切な医療および看護が必要";
+    text6 = "トータルスコア:"+String(Number(currentScore)+ 0);
+    message = text6;
+
+    console.log(question);
+
     return client.replyMessage(
       replyToken,
       {
-        type: 'template',
-        altText: 'Buttons alt text',
-        template: {
-          type: 'buttons',
-          thumbnailImageUrl: medical_houmon_iryou_man,
-          // title: 'My button sample',
-          text: '主治医は寿命をどれくらいと予測していますか？',
-          actions: [
-            { label: '１～２週です．', type: 'postback', data: '8.5',text: '１～２週です．' },
-            { label: '３～４週です．', type: 'postback', data: 'cold' ,text: '３～４週です．'},
-            { label: '５～６週です．', type: 'postback', data: 'hello こんにちは', text: '血圧が高いです．' },
-            { label: '７～１2週です．', type: 'postback', data: 'bad', text: '調子がいまひとつです．' },
-          ],
-        },
-      }
-    );
-  //inserted end
-
-  //inserted start
-  case '１～２週です．':
-    return client.replyMessage(
-      replyToken,
-      {
-        type: 'template',
-        altText: 'Buttons alt text',
-        template: {
-          type: 'buttons',
-          thumbnailImageUrl: medical_houmon_iryou_man,
-          // title: 'My button sample',
-          text: '全身状態は',
-          actions: [
-            { label: '全く動けず', type: 'postback', data: '8.5',text: '30+' },
-            { label: '「非常に重症', type: 'postback', data: '20−' ,text: '風邪気味です．'},
-            { label: '５～６週です．', type: 'postback', data: 'hello こんにちは', text: '血圧が高いです．' },
-            { label: '７～１2週です．', type: 'postback', data: 'bad', text: '調子がいまひとつです．' },
-          ],
-        },
-      }
-    );
-  //inserted end
-
-
-  //inserted start
-  case 'buttonss':
-    return client.replyMessage(
-      replyToken,
-      {
-        type: 'template',
-        altText: 'Buttons alt text',
-        template: {
-          type: 'buttons',
-          thumbnailImageUrl: medical_houmon_iryou_man,
-          // title: 'My button sample',
-          text: '体調はいかがですか？',
-          actions: [
-            { label: '特に変わりはないです．', type: 'postback', data: 'good',text: '特に変わりはないです．' },
-            { label: '風邪気味です．', type: 'postback', data: 'cold' ,text: '風邪気味です．'},
-            { label: '血圧が高いです．', type: 'postback', data: 'hello こんにちは', text: '血圧が高いです．' },
-            { label: '調子がいまひとつです．', type: 'postback', data: 'bad', text: '調子がいまひとつです．' },
-          ],
-        },
-      }
-    );
-  //inserted end
-
-
-    case 'confirm':
-      return client.replyMessage(
-        replyToken,
-        {
-          type: 'template',
-          altText: 'Confirm alt text',
-          template: {
-            type: 'confirm',
-            text: 'Do it?',
-            actions: [
-              { label: 'Yes', type: 'message', text: 'Yes!' },
-              { label: 'No', type: 'message', text: 'No!' },
-            ],
-          },
-        }
-      )
-    case 'carousel':
-      return client.replyMessage(
-        replyToken,
-        {
-          type: 'template',
-          altText: 'Carousel alt text',
-          template: {
-            type: 'carousel',
-            columns: [
-              {
-                thumbnailImageUrl: buttonsImageURL,
-                title: 'hoge',
-                text: 'fuga',
-                actions: [
-                  { label: 'Go to line.me', type: 'uri', uri: 'https://line.me' },
-                  { label: 'Say hello1', type: 'postback', data: 'hello こんにちは' },
-                ],
-              },
-              {
-                thumbnailImageUrl: buttonsImageURL,
-                title: 'hoge',
-                text: 'fuga',
-                actions: [
-                  { label: '言 hello2', type: 'postback', data: 'hello こんにちは', text: 'hello こんにちは' },
-                  { label: 'Say message', type: 'message', text: 'Rice=米' },
-                ],
-              },
-            ],
-          },
-        }
-      );
-    case 'image carousel':
-      return client.replyMessage(
-        replyToken,
-        {
-          type: 'template',
-          altText: 'Image carousel alt text',
-          template: {
-            type: 'image_carousel',
-            columns: [
-              {
-                imageUrl: buttonsImageURL,
-                action: { label: 'Go to LINE', type: 'uri', uri: 'https://line.me' },
-              },
-              {
-                imageUrl: buttonsImageURL,
-                action: { label: 'Say hello1', type: 'postback', data: 'hello こんにちは' },
-              },
-              {
-                imageUrl: buttonsImageURL,
-                action: { label: 'Say message', type: 'message', text: 'Rice=米' },
-              },
-              {
-                imageUrl: buttonsImageURL,
-                action: {
-                  label: 'datetime',
-                  type: 'datetimepicker',
-                  data: 'DATETIME',
-                  mode: 'datetime',
-                },
-              },
-            ]
-          },
-        }
-      );
-    case 'datetime':
-      return client.replyMessage(
-        replyToken,
-        {
-          type: 'template',
-          altText: 'Datetime pickers alt text',
-          template: {
-            type: 'buttons',
-            text: 'Select date / time !',
-            actions: [
-              { type: 'datetimepicker', label: 'date', data: 'DATE', mode: 'date' },
-              { type: 'datetimepicker', label: 'time', data: 'TIME', mode: 'time' },
-              { type: 'datetimepicker', label: 'datetime', data: 'DATETIME', mode: 'datetime' },
-            ],
-          },
-        }
-      );
-    case 'imagemap':
-      return client.replyMessage(
-        replyToken,
-        {
-          type: 'imagemap',
-          baseUrl: `${baseURL}/static/rich`,
-          altText: 'Imagemap alt text',
-          baseSize: { width: 1040, height: 1040 },
-          actions: [
-            { area: { x: 0, y: 0, width: 520, height: 520 }, type: 'uri', linkUri: 'https://store.line.me/family/manga/en' },
-            { area: { x: 520, y: 0, width: 520, height: 520 }, type: 'uri', linkUri: 'https://store.line.me/family/music/en' },
-            { area: { x: 0, y: 520, width: 520, height: 520 }, type: 'uri', linkUri: 'https://store.line.me/family/play/en' },
-            { area: { x: 520, y: 520, width: 520, height: 520 }, type: 'message', text: 'URANAI!' },
-          ],
-          video: {
-            originalContentUrl: `${baseURL}/static/imagemap/video.mp4`,
-            previewImageUrl: `${baseURL}/static/imagemap/preview.jpg`,
-            area: {
-              x: 280,
-              y: 385,
-              width: 480,
-              height: 270,
+        "type":"text",
+        "label":"ps",
+        "text": question,
+        "quickReply":　{ 
+          "items": [
+            {
+              "type": "action", 
+              "action": {
+                "type": "message",
+                "label": label1,
+                "text": text1,
+              }
             },
-            externalLink: {
-              linkUri: 'https://line.me',
-              label: 'LINE'
-            }
-          },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": label2,
+                "text": text2,
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": label3,
+                "text": text3,
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": label4,
+                "text": text4,
+              }
+            },
+            {
+              "type": "action", 
+              "action": {
+                "type": "message",
+                "label": label5,
+                "text": text5,
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": label6,
+                "text": text6,
+              }
+            },
+          ]
         }
-      );
-    case 'bye':
-      switch (source.type) {
-        case 'user':
-          return replyText(replyToken, 'Bot can\'t leave from 1:1 chat');
-        case 'group':
-          return replyText(replyToken, 'Leaving group')
-            .then(() => client.leaveGroup(source.groupId));
-        case 'room':
-          return replyText(replyToken, 'Leaving room')
-            .then(() => client.leaveRoom(source.roomId));
       }
-    default:
-      console.log(`Echo message to ${replyToken}: ${message.text}`);
-      return replyText(replyToken, message.text);
+    );
+  
   }
 }
 
