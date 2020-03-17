@@ -355,6 +355,48 @@ function handleText(message, replyToken, source) {
       }
     );
   
+  } else if (/^appetite/.test(message.text)) {
+    question = "呼吸困難は？";
+
+    label1 = "呼吸困難あり";
+    text1 = "dyspnea トータルスコア:"+String(Number(currentScore)+ 1.0);
+    message = text1;
+
+    label2 = "呼吸困難なし";
+    text2 = "dyspnea トータルスコア:"+String(Number(currentScore)+ 0);
+    message = text2;
+
+    console.log(question);
+
+    return client.replyMessage(
+      replyToken,
+      {
+        "type":"text",
+        "label":"ps",
+        "text": question,
+        "quickReply":　{ 
+          "items": [
+            {
+              "type": "action", 
+              "action": {
+                "type": "message",
+                "label": label1,
+                "text": text1,
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": label2,
+                "text": text2,
+              }
+            },
+          ]
+        } 
+      }
+    );
+  
   }
 }
 
