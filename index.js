@@ -397,6 +397,114 @@ function handleText(message, replyToken, source) {
       }
     );
   
+  } else if (/^dyspnea/.test(message.text)) {
+    question = "白血球数(/m㎥)は？";
+
+    label1 = ">11000";
+    text1 = "WBC トータルスコア:"+String(Number(currentScore)+ 1.5);
+    message = text1;
+
+    label2 = "8501～11000";
+    text2 = "WBC トータルスコア:"+String(Number(currentScore)+ 0.5);
+    message = text2;
+
+    label3 = "≦8500";
+    text3 = "WBC トータルスコア:"+String(Number(currentScore)+ 0);
+    message = text3;
+
+    console.log(question);
+
+    return client.replyMessage(
+      replyToken,
+      {
+        "type":"text",
+        "label":"ps",
+        "text": question,
+        "quickReply":　{ 
+          "items": [
+            {
+              "type": "action", 
+              "action": {
+                "type": "message",
+                "label": label1,
+                "text": text1,
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": label2,
+                "text": text2,
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": label3,
+                "text": text3,
+              }
+            },
+          ]
+        } 
+      }
+    );
+  
+  } else if (/^WBC/.test(message.text)) {
+    question = "リンパ球 (%)は？";
+
+    label1 = "0～11.9";
+    text1 = "lymph トータルスコア:"+String(Number(currentScore)+ 2.5);
+    message = text1;
+
+    label2 = "12～19.9";
+    text2 = "lymph トータルスコア:"+String(Number(currentScore)+ 1.0);
+    message = text2;
+
+    label3 = "≧20";
+    text3 = "lymph トータルスコア:"+String(Number(currentScore)+ 0);
+    message = text3;
+
+    console.log(question);
+
+    return client.replyMessage(
+      replyToken,
+      {
+        "type":"text",
+        "label":"ps",
+        "text": question,
+        "quickReply":　{ 
+          "items": [
+            {
+              "type": "action", 
+              "action": {
+                "type": "message",
+                "label": label1,
+                "text": text1,
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": label2,
+                "text": text2,
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": label3,
+                "text": text3,
+              }
+            },
+          ]
+        } 
+      }
+    );
+  
   }
 }
 
