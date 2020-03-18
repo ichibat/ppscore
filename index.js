@@ -140,27 +140,27 @@ function handleText(message, replyToken, source) {
     question = "臨床的な予後の予測は？または医者はどれくらいの寿命とみている？";
 
     label1 = "1~2週";
-    text1 = "1~2週 トータルスコア:"+String(Number(currentScore)+ 8.5);
+    text1 = "prognosis トータルスコア:"+String(Number(currentScore)+ 8.5);
     message = text1;
 
     label2 = "3~4週";
-    text2 = "3~4週 トータルスコア:"+String(Number(currentScore)+ 6);
+    text2 = "prognosis トータルスコア:"+String(Number(currentScore)+ 6);
     message = text2;
 
     label3 = "5~6週";
-    text3 = "5~6週 トータルスコア:"+String(Number(currentScore)+ 4);
+    text3 = "prognosis トータルスコア:"+String(Number(currentScore)+ 4);
     message = text3;
 
     label4 = "7~10週";
-    text4 = "7~10週 トータルスコア:"+String(Number(currentScore)+ 2.5);
+    text4 = "prognosis トータルスコア:"+String(Number(currentScore)+ 2.5);
     message = text4;
 
     label5 = "11~12週";
-    text5 = "11~12週 トータルスコア:"+String(Number(currentScore)+ 2.5);
+    text5 = "prognosis トータルスコア:"+String(Number(currentScore)+ 2.5);
     message = text5;
 
     label6 = "13週以上";
-    text6 = "13週以上 トータルスコア:"+String(Number(currentScore)+ 0);
+    text6 = "prognosis トータルスコア:"+String(Number(currentScore)+ 0);
     message = text6;
 
     return client.replyMessage(
@@ -223,7 +223,7 @@ function handleText(message, replyToken, source) {
         }
       }
     );
-  } else if (/^1~2/.test(message.text)) {
+  } else if (/^prognosis/.test(message.text)) {
     question = "全身状態はどれにあてはまりますか？";
 
     label1 = "正常、臨床症状なし";
