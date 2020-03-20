@@ -1,5 +1,6 @@
 'use strict';
 
+
 const line = require('@line/bot-sdk');
 const express = require('express');
 const fs = require('fs');
@@ -314,14 +315,14 @@ function handleText(message, replyToken, source) {
     );
   
   } else if (/^KPS/.test(message.text)) {
-    question = "食欲は？";
+    question = "食欲不振は？";
 
-    label1 = "食欲あり";
-    text1 = "appetite トータルスコア:"+String(Number(currentScore)+ 1.5);
+    label1 = "食欲不振あり";
+    text1 = "appetite loss トータルスコア:"+String(Number(currentScore)+ 1.5);
     message = text1;
 
     label2 = "食欲なし";
-    text2 = "appetite トータルスコア:"+String(Number(currentScore)+ 0);
+    text2 = "appetite loss トータルスコア:"+String(Number(currentScore)+ 0);
     message = text2;
 
     console.log(question);
