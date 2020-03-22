@@ -251,6 +251,18 @@ function handleText(message, replyToken, source) {
     text6 = "KPS トータルスコア:"+String(Number(currentScore)+ 0);
     message = text6;
 
+    // label7 = "正常、臨床症状なし";
+    // text7 = "KPS トータルスコア:"+String(Number(currentScore)+ 0);
+    // message = text7;
+
+    // label8 = "軽い症状があるが正常の活動可能";
+    // text8 = "KPS トータルスコア:"+String(Number(currentScore)+ 0);
+    // message = text8;
+
+    // label9 = "症状があるが努力して正常の活動が可能";
+    // text9 = "KPS トータルスコア:"+String(Number(currentScore)+ 0);
+    // message = text9;
+
     console.log(question);
 
     return client.replyMessage(
@@ -321,7 +333,7 @@ function handleText(message, replyToken, source) {
     text1 = "appetite loss トータルスコア:"+String(Number(currentScore)+ 1.5);
     message = text1;
 
-    label2 = "食欲なし";
+    label2 = "食欲不振なし";
     text2 = "appetite loss トータルスコア:"+String(Number(currentScore)+ 0);
     message = text2;
 
@@ -506,13 +518,34 @@ function handleText(message, replyToken, source) {
       }
     );
   
-  } else if (/^lymph/.test(message.text) && Number(currentScore)>=9) {
-    question = "予後は21日以下（週単位）の可能性が高いです．";
+  } 
+  else if (/^lymph/.test(message.text) && Number(currentScore)>=9) {
+    question = "予後は21日以下（週単位）の可能性が高いです．トータルスコア:"+String(Number(currentScore));
     console.log(question);
-  } else if (/^lymph/.test(message.text) && Number(currentScore)<=5.5) {
-    question = "予後は３０日以上（月単位）の可能性が高いです．";
-    console.log(question);
+    return client.replyMessage(
+      replyToken,
+      {
+        "type":"text",
+        "label":"ps",
+        "text": question,
   }
+     )
+ } 
+ 
+ else if (/^lymph/.test(message.text) && Number(currentScore)<=5.5) {
+  question = "予後は30日以上（月単位）の可能性が高いです．トータルスコア:"+String(Number(currentScore));
+  console.log(question);
+  return client.replyMessage(
+    replyToken,
+    {
+      "type":"text",
+      "label":"ps",
+      "text": question,
+}
+   )
+} 
+
+  
 }
 
 function handleImage(message, replyToken) {
