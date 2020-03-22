@@ -509,7 +509,9 @@ function handleText(message, replyToken, source) {
   } else if (/^lymph/.test(message.text) && Number(currentScore)>=9) {
     question = "予後は21日以下（週単位）の可能性が高いです．";
     console.log(question);
-    
+  } else if (/^lymph/.test(message.text) && Number(currentScore)<=5.5) {
+    question = "予後は３０日以上（月単位）の可能性が高いです．";
+    console.log(question);
   }
 }
 
